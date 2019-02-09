@@ -1,0 +1,13 @@
+int ledPIN = A2; // A2 = Port Analogique 2 sur ma carte
+ 
+void setup() {
+  pinMode(ledPIN, OUTPUT);
+ 
+}
+ 
+void loop() {
+  digitalWrite(ledPIN, HIGH);
+  delay(1000);   // Delay de 1000ms a l'état allumé
+  digitalWrite(ledPIN, LOW);
+  delay(1000);   // Delay de 1000ms a l'état éteind
+}
