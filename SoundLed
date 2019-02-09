@@ -1,0 +1,44 @@
+int incomingAudio;
+int ledPIN = A2;
+
+/*
+Programme qui allume une LED lorsque la valeur de audioBuffer[i] dépasse 600.
+*/
+
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  Serial.println(" Ready \n");
+  pinMode(ledPIN, OUTPUT);
+
+}
+
+void loop() {
+  
+  incomingAudio = analogRead(A0); //read input from A0
+  int audioBuffer[16];
+  
+  for (int i=0; i<16; i++){
+    incomingAudio = analogRead(A0); //read input from A0
+    audioBuffer[i] = incomingAudio;
+    delay(200);
+    Serial.print(audioBuffer[i]);
+    delay(200);
+    Serial.print(" ");   
+  if (audioBuffer[i] > 600)
+  {
+    digitalWrite(ledPIN, HIGH); 
+    delay(1000);
+    digitalWrite(ledPIN, LOW);
+  }
+  else
+  {
+    digitalWrite(ledPIN, LOW);
+    delay(1000); 
+  }
+  
+  }
+  Serial.print("\n");
+
+}
